@@ -33,6 +33,11 @@ class _MenuScreenState extends State<MenuScreen> {
   final StoreService _store = StoreService();
 
   RinkSettings get _s => widget.settings;
+
+  /// Rebuild after returning from a pushed screen (e.g. custom theme editor).
+  void refresh() {
+    if (mounted) setState(() {});
+  }
   RinkThemeDef get _t =>
       RinkThemes.byId(_s.themeId, custom: _s.customTheme);
 
@@ -466,7 +471,7 @@ class _ThemeCard extends StatelessWidget {
                     ),
                   ))
                       .then((_) {
-                    if (state.mounted) state.setState(() {});
+                    state.refresh();
                   });
                   return;
                 }

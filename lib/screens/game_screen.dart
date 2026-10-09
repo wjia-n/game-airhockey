@@ -55,6 +55,8 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         widget.audio.goal();
       case MatchEvent.win:
         _onMatchEnd();
+      case MatchEvent.lose:
+        _onMatchEnd();
     }
   }
 
