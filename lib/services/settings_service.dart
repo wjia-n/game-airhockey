@@ -64,7 +64,7 @@ class RinkSettings extends ChangeNotifier {
   int wins = 0;
   int gamesPlayed = 0;
   int goalsScored = 0; // lifetime human-side goals
-  bool isPro = false;
+  bool isPro = true; // everything unlocked — no Pro version
 
   /// Custom theme colors (ARGB ints). Defaults mirror Classic Arcade.
   Map<String, int> customColors = Map.of(_defaultCustomColors);
@@ -135,7 +135,7 @@ class RinkSettings extends ChangeNotifier {
     wins = p.getInt(_kWins) ?? 0;
     gamesPlayed = p.getInt(_kGames) ?? 0;
     goalsScored = p.getInt(_kGoals) ?? 0;
-    isPro = p.getBool(_kIsPro) ?? false;
+    isPro = true; // everything unlocked
     for (final k in _defaultCustomColors.keys) {
       customColors[k] =
           p.getInt('$_kCustomPrefix$k') ?? _defaultCustomColors[k]!;
